@@ -1,0 +1,25 @@
+#macOS / Xcode
+.DS_Store
+Pods/
+Podfile.lock
+Runner.xcworkspace/
+
+# Android Studio
+*.iml
+.gradle
+/local.properties
+/.idea/caches/
+/.idea/libraries/
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+
+# Flutter build
+/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/

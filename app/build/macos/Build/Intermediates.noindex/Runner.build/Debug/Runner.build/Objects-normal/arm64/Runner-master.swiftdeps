@@ -1,0 +1,8 @@
+version: "Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)"
+options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
+build_start_time: [1678758415, 519785881]
+build_end_time: [1678758418, 781054973]
+inputs:
+  "/Users/kimjunho/Desktop/github/DeveloperCompetencyTest/app/macos/Flutter/GeneratedPluginRegistrant.swift": [1678758402, 853645324]
+  "/Users/kimjunho/Desktop/github/DeveloperCompetencyTest/app/macos/Runner/AppDelegate.swift": [1678307504, 0]
+  "/Users/kimjunho/Desktop/github/DeveloperCompetencyTest/app/macos/Runner/MainFlutterWindow.swift": [1678307504, 0]
