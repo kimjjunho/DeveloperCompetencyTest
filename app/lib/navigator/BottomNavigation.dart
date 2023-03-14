@@ -1,3 +1,4 @@
+import 'package:developer_compentency_test/theme/Color.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigation extends StatefulWidget {
@@ -22,6 +23,8 @@ class BottomNavigationState extends State<BottomNavigation> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
+        selectedItemColor: green400,
+        unselectedItemColor: gray300,
         onTap: (int newIndex) {
           setState(() {
             currentIndex = newIndex;
@@ -30,7 +33,7 @@ class BottomNavigationState extends State<BottomNavigation> {
         items: const [
           BottomNavigationBarItem(
             label: '홈',
-            icon: Icon(Icons.home)
+            icon: Icon(Icons.home),
           ),
           BottomNavigationBarItem(
               label: '기록',
