@@ -1,4 +1,3 @@
-import 'package:developer_compentency_test/component/Header.dart';
 import 'package:developer_compentency_test/feature/mypage/MyPageScreen.dart';
 import 'package:developer_compentency_test/theme/Color.dart';
 import 'package:flutter/material.dart';
