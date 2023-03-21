@@ -1,10 +1,11 @@
+import 'package:developer_compentency_test/feature/login/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'navigator/BottomNavigation.dart';
 
 void main() {
   runApp(
       MaterialApp(
-        home: BottomNavigation(),
+        home: LoginScreen(),
       )
   );
 }
