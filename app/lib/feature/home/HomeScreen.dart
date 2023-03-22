@@ -1,4 +1,6 @@
 import 'package:developer_compentency_test/component/Header.dart';
+import 'package:developer_compentency_test/feature/game/ExplanationScreen.dart';
+import 'package:developer_compentency_test/feature/game/GameType.dart';
 import 'package:developer_compentency_test/feature/login/LoginScreen.dart';
 import 'package:developer_compentency_test/theme/Color.dart';
 import 'package:developer_compentency_test/typography/text.dart';
@@ -9,13 +11,13 @@ class Game {
   final String title;
   final int gameCount;
   final Color color;
-  final Widget nav;
+  final GameType gameType;
 
   const Game({
     required this.title,
     required this.gameCount,
     required this.color,
-    required this.nav,
+    required this.gameType,
   });
 }
 
@@ -28,14 +30,14 @@ class HomeScreen extends StatefulWidget {
 
 class HomeState extends State<HomeScreen> {
   List<Game> gameList = const [
-    Game(title: "가위바위보", gameCount: 5, color: yellow, nav: LoginScreen()),
-    Game(title: "숫자 누르기", gameCount: 5, color: yellow, nav: LoginScreen()),
-    Game(title: "도형 회전하기", gameCount: 5, color: green500, nav: LoginScreen()),
-    Game(title: "약속 정하기", gameCount: 5, color: green500, nav: LoginScreen()),
-    Game(title: "길 만들기", gameCount: 5, color: blue400, nav: LoginScreen()),
-    Game(title: "도형 순서 기억하기", gameCount: 5, color: blue400, nav: LoginScreen()),
-    Game(title: "고양이 술래잡기", gameCount: 5, color: red, nav: LoginScreen()),
-    Game(title: "마법약 만들기", gameCount: 5, color: red, nav: LoginScreen()),
+    Game(title: "가위바위보", gameCount: 5, color: yellow, gameType: GameType.rockPaperScissors),
+    Game(title: "숫자 누르기", gameCount: 5, color: yellow, gameType: GameType.chooseNumber),
+    Game(title: "도형 회전하기", gameCount: 5, color: green500, gameType: GameType.rotationFigure),
+    Game(title: "약속 정하기", gameCount: 5, color: green500, gameType: GameType.chooseNumber),
+    Game(title: "길 만들기", gameCount: 5, color: blue400, gameType: GameType.makeRoad),
+    Game(title: "도형 순서 기억하기", gameCount: 5, color: blue400, gameType: GameType.rememberFigure),
+    Game(title: "고양이 술래잡기", gameCount: 5, color: red, gameType: GameType.catHideAndSeek),
+    Game(title: "마법약 만들기", gameCount: 5, color: red, gameType: GameType.makePotion),
   ];
 
   @override build(BuildContext context) {
@@ -103,7 +105,7 @@ class GameItem extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => game.nav));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ExplanationScreen(gameType: game.gameType)));
                     },
                     child: Detail2(text: "시작", color: green400,),
                   ),
