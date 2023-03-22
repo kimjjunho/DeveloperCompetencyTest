@@ -29,6 +29,13 @@ class HomeScreen extends StatefulWidget {
 class HomeState extends State<HomeScreen> {
   List<Game> gameList = const [
     Game(title: "가위바위보", gameCount: 5, color: yellow, nav: LoginScreen()),
+    Game(title: "숫자 누르기", gameCount: 5, color: yellow, nav: LoginScreen()),
+    Game(title: "도형 회전하기", gameCount: 5, color: green500, nav: LoginScreen()),
+    Game(title: "약속 정하기", gameCount: 5, color: green500, nav: LoginScreen()),
+    Game(title: "길 만들기", gameCount: 5, color: blue400, nav: LoginScreen()),
+    Game(title: "도형 순서 기억하기", gameCount: 5, color: blue400, nav: LoginScreen()),
+    Game(title: "고양이 술래잡기", gameCount: 5, color: red, nav: LoginScreen()),
+    Game(title: "마법약 만들기", gameCount: 5, color: red, nav: LoginScreen()),
   ];
 
   @override build(BuildContext context) {
@@ -88,6 +95,7 @@ class GameItem extends StatelessWidget {
           SizedBox(width: 28),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Body3(text: game.title),
               SizedBox(height: 10,),
@@ -113,7 +121,7 @@ class GameItem extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     color: game.color,
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(50),
                   ),
                   width: 64,
                   height: 64,
