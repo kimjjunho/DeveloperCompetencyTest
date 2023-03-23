@@ -30,7 +30,24 @@ class RecordScreenState extends State<RecordScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TabBar(tabs: recordTab),
+                    Container(
+                      margin: EdgeInsets.symmetric(horizontal: 16),
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: green200,
+                        borderRadius: BorderRadius.circular(22),
+                      ),
+                      child: TabBar(
+                          indicatorPadding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                          indicator: BoxDecoration(
+                            color: white,
+                            borderRadius: BorderRadius.circular(22),
+                          ),
+                          labelColor: green600,
+                          unselectedLabelColor: white,
+                          tabs: recordTab,
+                      ),
+                    )
                   ],
                 )
             ),
