@@ -1,7 +1,6 @@
 import 'package:developer_compentency_test/component/Header.dart';
 import 'package:developer_compentency_test/feature/game/ExplanationScreen.dart';
 import 'package:developer_compentency_test/feature/game/GameType.dart';
-import 'package:developer_compentency_test/feature/login/LoginScreen.dart';
 import 'package:developer_compentency_test/theme/Color.dart';
 import 'package:developer_compentency_test/typography/text.dart';
 import 'package:flutter/cupertino.dart';
