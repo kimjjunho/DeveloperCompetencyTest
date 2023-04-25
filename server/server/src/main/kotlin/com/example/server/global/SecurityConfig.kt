@@ -34,7 +34,7 @@ class SecurityConfig(
 
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/signup", "/login").permitAll()
+                .requestMatchers("/user/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
