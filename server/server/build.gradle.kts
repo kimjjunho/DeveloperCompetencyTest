@@ -18,22 +18,37 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    //jpa
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("org.springframework.boot:spring-boot-starter-jdbc")
-    implementation("mysql:mysql-connector-java:8.0.28")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis")
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-security")
+
+    //jwt
     implementation("io.jsonwebtoken:jjwt:0.9.1")
-    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
+
+    //redis
+    implementation("org.springframework.boot:spring-boot-starter-data-redis")
+
+    //security
+    implementation("org.springframework.boot:spring-boot-starter-security")
+
+    //validation
     implementation("org.springframework.boot:spring-boot-starter-validation")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    //web
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+    //kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+    //mysql
+    runtimeOnly("mysql:mysql-connector-java:8.0.28")
+
+    //java servlet
+    implementation("javax.servlet:javax.servlet-api:4.0.1")
+
+    //processor
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
 
 tasks.withType<KotlinCompile> {
@@ -41,8 +56,4 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf("-Xjsr305=strict")
         jvmTarget = "17"
     }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }

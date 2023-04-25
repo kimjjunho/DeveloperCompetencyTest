@@ -1,22 +1,25 @@
 package com.example.server.domain.user.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
+import org.jetbrains.annotations.NotNull
 
 @Entity
-data class User(
+@Table(name = "tbl_user")
+class User(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: Long? = null,
+        val id: Long = 0,
 
-        val user_id: String? = null,
+        val userId: String,
 
-        val password: String? = null,
+        password: String,
 
-        val name: String? = null,
+        val name: String,
 
-        val image: String? = null
+        val image: String
+) {
 
-)
+        @field: NotNull
+        var password = password
+                protected set
+}
