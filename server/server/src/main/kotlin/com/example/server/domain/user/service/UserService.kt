@@ -7,6 +7,7 @@ import com.example.server.domain.user.entity.User
 import com.example.server.domain.user.repository.UserRepository
 import com.example.server.global.JwtProvider
 import org.springframework.stereotype.Service
+import java.lang.RuntimeException
 
 @Service
 class UserService(
@@ -27,11 +28,13 @@ class UserService(
 
     fun signin(signinRequest: SigninRequest): TokenResponse {
         val user = userRepository.findByUserId(signinRequest.userId)
-        if (!user?.password.equals(signinRequest.password)) {
-            //TODO: 예외처리
+                ?: throw RuntimeException()
+
+        if (user.password != signinRequest.password) {
+            throw RuntimeException()
         }
 
-        val access = jwtProvider.createAccessToken(user?.userId!!)
+        val access = jwtProvider.createAccessToken(user.userId)
         val refresh = jwtProvider.createRefreshToken(user.userId)
 
         return TokenResponse(
@@ -40,4 +43,5 @@ class UserService(
         )
     }
 
+    fun getProfile(): User = userRepository.findUserInfo()
 }

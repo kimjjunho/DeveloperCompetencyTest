@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component
 
 
 // TODO: 손재민 박휘응이 빨간줄 없앰
-@ConfigurationPropertiesBinding
 @ConfigurationProperties(prefix = "jwt")
 data class JwtProperties (
         val secret: String,

@@ -21,11 +21,11 @@ class JwtProvider (
     val ACCESSTOKEN_EXP_TIME: Long = 1000L * 60 * 60
     val REFRESHTOKEN_EXP_TIME: Long = 1000L * 60 * 60 * 24 * 7
 
-    fun createAccessToken(userId: String): String{
+    fun createAccessToken(userId: String): String {
         val claims: Claims = Jwts.claims().setSubject(userId)
 
         return Jwts.builder()
-                .setClaims(claims)
+                .setSubject(userId)
                 .setExpiration(Date(System.currentTimeMillis() + ACCESSTOKEN_EXP_TIME))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.secret)
                 .compact()

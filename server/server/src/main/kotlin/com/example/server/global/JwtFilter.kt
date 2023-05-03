@@ -17,8 +17,8 @@ class JwtFilter (
             response: HttpServletResponse,
             filterChain: FilterChain
     ) {
-        val authenticationHeader: String? = request.getHeader("Authorization") ?: return filterChain.doFilter(request, response)
-        val token = authenticationHeader?.substring("Bearer ".length) ?: return filterChain.doFilter(request, response)
+        val authenticationHeader: String = request.getHeader("Authorization") ?: return filterChain.doFilter(request, response)
+        val token = authenticationHeader.substring("Bearer ".length)
         if(jwtProvider.validation(token)){
             val authentication: Authentication = jwtProvider.getAuthentication(token)
             SecurityContextHolder.getContext().authentication = authentication

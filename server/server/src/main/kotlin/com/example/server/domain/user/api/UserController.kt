@@ -3,9 +3,11 @@ package com.example.server.domain.user.api
 import com.example.server.domain.user.api.dto.request.SigninRequest
 import com.example.server.domain.user.api.dto.request.SignupRequest
 import com.example.server.domain.user.api.dto.response.TokenResponse
+import com.example.server.domain.user.api.dto.response.UserResponse
 import com.example.server.domain.user.service.UserService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -27,4 +29,16 @@ class UserController(
     @PostMapping("/signin")
     fun signin(@Valid @RequestBody signinRequest: SigninRequest): TokenResponse =
             userService.signin(signinRequest = signinRequest)
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/information")
+    fun getProfile(): UserResponse {
+        val user = userService.getProfile()
+        return UserResponse(
+                userId = user.userId,
+                password = user.password,
+                name = user.name,
+                image = user.image
+        )
+    }
 }

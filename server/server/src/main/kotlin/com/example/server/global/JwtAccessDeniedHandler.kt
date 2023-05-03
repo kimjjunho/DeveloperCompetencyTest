@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component
 @Component
 class JwtAccessDeniedHandler : AccessDeniedHandler {
     override fun handle(
-            request: HttpServletRequest?,
-            response: HttpServletResponse?,
-            accessDeniedException: AccessDeniedException?
+            request: HttpServletRequest,
+            response: HttpServletResponse,
+            accessDeniedException: AccessDeniedException
     ) {
-        response?.sendError(HttpServletResponse.SC_FORBIDDEN)
+        response.sendError(HttpServletResponse.SC_FORBIDDEN)
     }
 }

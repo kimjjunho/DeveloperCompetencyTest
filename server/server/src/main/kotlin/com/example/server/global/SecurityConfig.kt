@@ -35,6 +35,7 @@ class SecurityConfig(
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/user/**").permitAll()
+                .requestMatchers("/game/**").authenticated()
                 .anyRequest().authenticated()
 
                 .and()
