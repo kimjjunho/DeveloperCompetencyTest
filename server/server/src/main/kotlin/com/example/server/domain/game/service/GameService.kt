@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service
 @Service
 class GameService(
         private val gameRepository: GameRepository,
-        private val jwtProvider: JwtProvider,
 ) {
 
     fun saveGameResult(gameResultRequest: GameResultRequest) {

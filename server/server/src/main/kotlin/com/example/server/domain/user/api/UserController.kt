@@ -5,7 +5,6 @@ import com.example.server.domain.user.api.dto.request.SignupRequest
 import com.example.server.domain.user.api.dto.response.TokenResponse
 import com.example.server.domain.user.api.dto.response.UserResponse
 import com.example.server.domain.user.service.UserService
-import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
 @RequestMapping("/user")
 @RestController

@@ -13,9 +13,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-        private val jwtProvider: JwtProvider,
-        private val jwtAccessDeniedHandler: JwtAccessDeniedHandler,
-        private val jwtAuthenticationEntryPoint: JwtAuthenticationEntryPoint
+        private val jwtProvider: JwtProvider
 ) {
     @Bean
     fun filterChain(http: HttpSecurity) : SecurityFilterChain{
@@ -24,18 +22,13 @@ class SecurityConfig(
                 .and()
                 .csrf().disable()
 
-                .exceptionHandling()
-                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                .accessDeniedHandler(jwtAccessDeniedHandler)
-
-                .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()
                 .authorizeHttpRequests()
-                .requestMatchers("/user/**").permitAll()
-                .requestMatchers("/game/**").authenticated()
+                .antMatchers("/user/**").permitAll()
+                .antMatchers("/game/**").authenticated()
                 .anyRequest().authenticated()
 
                 .and()

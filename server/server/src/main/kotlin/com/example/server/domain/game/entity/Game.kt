@@ -1,8 +1,8 @@
 package com.example.server.domain.game.entity
 
 import com.example.server.domain.game.api.dto.response.GameResultResponse
-import jakarta.persistence.*
 import java.time.LocalDate
+import javax.persistence.*
 
 @Entity
 @Table(name = "tbl_game")
