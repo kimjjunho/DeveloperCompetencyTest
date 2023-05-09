@@ -69,3 +69,5 @@ flutter:
         - asset: assets/fonts/noto_sans_kr_thin.ttf
           weight: 100
 
+  assets:
+    - assets/images/img_profile.png
