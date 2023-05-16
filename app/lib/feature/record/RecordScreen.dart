@@ -80,11 +80,19 @@ class RecordScreenState extends State<RecordScreen> with TickerProviderStateMixi
                     ),
                   ],
                 ),
+                SizedBox(height: 16),
                 Expanded(
                     child: TabBarView(
                       controller: _tabController,
                       children: [
-                        Container(child: Body3(text: '1'),),
+                        ListView.builder(
+                            itemCount: recordList.length,
+                            shrinkWrap: true,
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            itemBuilder: (BuildContext context, int index) {
+                              return RecordItem(record: recordList[index]);
+                            }
+                        ),
                         Container(child: Body3(text: '2',),)
                       ],
                     )
@@ -104,10 +112,28 @@ class RecordItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-      return Row(
-        children: [
-          Body3(text: record.title),
-        ],
+      return Container(
+        height: 60,
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        decoration: BoxDecoration(
+          color: white,
+          borderRadius: BorderRadius.circular(5),
+          boxShadow: const [
+            BoxShadow(
+              color: gray300,
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0,3)
+            )
+          ]
+        ),
+        child: Row(
+          children: [
+            SizedBox(width: 16),
+            Body3(text: record.title),
+
+          ],
+        ),
       );
   }
 }
