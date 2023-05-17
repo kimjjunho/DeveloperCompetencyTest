@@ -1,5 +1,3 @@
-import { useFonts } from "expo-font";
-
 const Bold = 'Bold';
 const Regular = 'Regular';
 

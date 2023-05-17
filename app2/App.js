@@ -1,8 +1,10 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Typography from './design-system/Typography';
 import { useFonts } from "expo-font";
 import Color from './design-system/Colors';
+import Navigation from './Navigation';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -14,11 +16,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text style={[Typography.title1, { color:Color.blue300 }]}>working app</Text>
-      <Text style={[Typography.title2]}>working app</Text>
-      <StatusBar style="auto" />
-  </View>
+    <Navigation/>
   );
 }
 
