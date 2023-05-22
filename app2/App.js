@@ -1,7 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import Typography from './design-system/Typography';
 import { useFonts } from "expo-font";
 import Color from './design-system/Colors';
 import Navigation from './Navigation';

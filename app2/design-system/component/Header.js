@@ -1,7 +1,6 @@
 import React from 'react';
 import { SafeAreaView, Text } from 'react-native';
 import Typography from '../Typography';
-import Color from '../Colors';
 
 function GHeader({ title }) {
   return (

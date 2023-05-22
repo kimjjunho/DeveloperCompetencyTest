@@ -6,7 +6,7 @@ export default function Signin({ navigation }) {
   return(
     <SafeAreaView>
       <Text style={[Typography.title1]}>Signin</Text>
-      <Button title={'Go Home'} onPress={() => navigation.replace('Home')}/>
+      <Button title={'Go Home'} onPress={() => navigation.replace('Main')}/>
     </SafeAreaView>
   );
 }
