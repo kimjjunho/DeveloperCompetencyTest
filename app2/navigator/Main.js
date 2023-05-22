@@ -17,7 +17,15 @@ export default function Main() {
     <Tab.Navigator 
       initialRouteName = {home}
       screenOptions={
-        {headerShown : false, tabBarActiveTintColor : Color.green400}
+        {
+          headerShown : false,
+          tabBarActiveTintColor : Color.green400,
+          tabBarLabelStyle: {
+            fontSize: 14,
+            fontFamily: 'Regular'
+          },
+          /*tabBarStyle: { height: 85 }*/
+        }
       }
     >
       <Tab.Screen 
