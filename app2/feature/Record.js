@@ -1,6 +1,8 @@
 import React from "react";
-import { FlatList, View, Text } from "react-native";
+import { FlatList, View, Text, Platform } from "react-native";
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import PieChart from "react-native-pie-chart"
+import Pie from "react-native-pie"
 import Color from "../design-system/Colors";
 import GHeader from "../design-system/component/Header";
 import Typography from "../design-system/Typography";
@@ -61,9 +63,20 @@ const ScoreList = () => (
   </View>
 );
 
-const Graph = () => (
-  <View style={{flex: 1, backgroundColor: Color.white}}></View>
-);
+const Graph = () => {
+  const series = [123, 321, 123, 789, 537, 100, 100, 100];
+  const sliceColor = [Color.green100, Color.green200, Color.green300, Color.green400, Color.green500, Color.green600, Color.green700, Color.green800]
+  return Platform.OS === 'ios' ? <View style={{flex: 1, backgroundColor: Color.white, alignItems: 'center', justifyContent: 'center'}}>
+    <PieChart
+      widthAndHeight={250}
+      series={series}
+      sliceColor={sliceColor}
+      coverFill={Color.white}
+    />
+  </View> :
+   <View>
+   </View>
+};
 
 const Tab = createMaterialTopTabNavigator();
 
