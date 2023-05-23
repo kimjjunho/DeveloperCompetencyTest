@@ -39,12 +39,12 @@ const Typography = {
     fontFamily: Regular,
     color: Color.gray900,
   },
-  Body5: {
+  body5: {
     fontSize: 14,
     fontFamily: Bold,
     color: Color.gray900,
   },
-  Body6: {
+  body6: {
     fontSize: 14,
     fontFamily: Regular,
     color: Color.gray900,
