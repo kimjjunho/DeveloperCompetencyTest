@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, FlatList, Pressable, Alert } from "react-native";
+import { Text, View, FlatList, Pressable, Alert, SafeAreaView } from "react-native";
 import Typography from "../design-system/Typography";
 import GHeader from "../design-system/component/Header";
 import Color from "../design-system/Colors";
@@ -61,6 +61,7 @@ export default function Home({navigation}) {
       <GHeader title={"홈"}/>
       <FlatList
         data={HomeData}
+        contentContainerStyle={{height: 1200}}
         renderItem={({item}) => { 
           return <View style={
               {

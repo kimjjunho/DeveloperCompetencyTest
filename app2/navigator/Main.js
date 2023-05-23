@@ -23,8 +23,7 @@ export default function Main() {
           tabBarLabelStyle: {
             fontSize: 14,
             fontFamily: 'Regular'
-          },
-          /*tabBarStyle: { height: 85 }*/
+          }
         }
       }
     >

@@ -29,7 +29,7 @@ const Color = {
   yellow:'#FAF288',
 
   white:'#fff',
-  black:'000'
+  black:'#000'
 
 };
 

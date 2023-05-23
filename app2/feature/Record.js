@@ -1,15 +1,68 @@
 import React from "react";
-import { View } from "react-native";
+import { FlatList, View, Text } from "react-native";
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Color from "../design-system/Colors";
 import GHeader from "../design-system/component/Header";
+import Typography from "../design-system/Typography";
+
+const ScoreData =[
+  {
+    title: '가위바위보',
+    date: '2022-03-13',
+    total: 5,
+    correct: 3,
+  },
+  {
+    title: '도형 회전하기',
+    date: '2022-03-13',
+    total: 5,
+    correct: 2,
+  },
+  {
+    title: '길 만들기',
+    date: '2023-05-23',
+    total: 6,
+    correct: 3,
+  }
+];
 
 const ScoreList = () => (
-  <View style={{flex: 1, backgroundColor: Color.green800}}></View>
+  <View style={{flex: 1, backgroundColor: Color.white}}>
+    <FlatList
+      data={ScoreData}
+      renderItem={({item}) => {
+        return <View style={
+          {
+            height: 60,
+            marginHorizontal: 16,
+            marginTop: 16,
+            borderRadius: 5,
+            backgroundColor: Color.white,
+            elevation: 3,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            shadowColor: Color.gray500,
+            shadowOpacity: 1,
+            shadowOffset: {
+              height: 0,
+              width: 0
+            }
+          }
+        }>
+          <View style={{marginStart: 16}}>
+            <Text style={[Typography.body3]}>{item.title}</Text>
+            <Text style={[Typography.detail2, {color: Color.gray600}]}>{item.date}</Text>
+          </View>
+          <Text style={[Typography.body3, {marginEnd: 16, color: item.correct/item.total >= 0.5 ? Color.blue400 : Color.red}]}>{item.total}/{item.correct}</Text>
+        </View>
+      }}
+    />
+  </View>
 );
 
 const Graph = () => (
-  <View style={{flex: 1, backgroundColor: Color.black}}></View>
+  <View style={{flex: 1, backgroundColor: Color.white}}></View>
 );
 
 const Tab = createMaterialTopTabNavigator();
