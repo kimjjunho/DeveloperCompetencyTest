@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { useFonts } from "expo-font";
 import Color from './design-system/Colors';
-import Navigation from './Navigation';
+import Navigation from './navigator/Navigation';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
