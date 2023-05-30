@@ -1,8 +1,9 @@
 import React from "react";
-import { Text, SafeAreaView, StatusBar, TextInput, StyleSheet, Pressable, View } from "react-native";
+import { Text, SafeAreaView, StatusBar, TextInput, StyleSheet, Pressable, View, Dimensions, Image } from "react-native";
 import Typography from "../../design-system/Typography";
 import Color from "../../design-system/Colors";
 import GButton from "../../design-system/component/Button";
+import Swiper from "react-native-web-swiper";
 
 const styles = StyleSheet.create({
   input_container: {
@@ -23,10 +24,32 @@ const styles = StyleSheet.create({
 });
 
 export default function Signin({ navigation }) {
+  const appWidth = Dimensions.get('window').width;
+  const images = [
+    require('../sign/1.png'),
+    require('../sign/2.png'),
+    require('../sign/3.png'),
+    require('../sign/4.png'),
+    require('../sign/5.png'),
+    require('../sign/6.png'),
+  ];
   return(
     <SafeAreaView style={{backgroundColor: Color.white, flex: 1}}>
       <StatusBar backgroundColor={Color.white}/>
-      <Text style={[Typography.title1]}>Signin</Text>
+      <View style={{backgroundColor: Color.green400, height: appWidth}}>
+        <Swiper
+          loop
+          timeout={5}
+          controlsEnabled={false}>
+          {images.map((item)=> {
+            return(
+              <View style={{alignItems: 'center', justifyContent: 'center',flex:1}}>
+               <Image source={item} style={{width: 200, height: 200}}/>
+              </View>
+            )}
+          )}
+        </Swiper>
+      </View>
       <View style={{height: 26}}/>
       <TextInput style={styles.input_container} placeholder="아이디"/>
       <View style={{height: 16}}/>

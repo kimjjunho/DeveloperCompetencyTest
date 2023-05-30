@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Signin from '../feature/Signin';
 import Main from './Main';
 import RPS from '../feature/game/1RPS';
 import ClickNumber from '../feature/game/2ClickNumber';
@@ -10,6 +9,7 @@ import MakeRoad from '../feature/game/5MakeRoad';
 import RememberFigure from '../feature/game/6RememberFigure';
 import MakePotion from '../feature/game/8MakePotion';
 import CatCatch from '../feature/game/7CatCatch';
+import Signin from '../feature/sign/Signin';
 
 const Stack = createNativeStackNavigator();
 

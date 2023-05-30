@@ -28,6 +28,7 @@
     "react-native-pie-chart": "^3.0.1",
     "react-native-tab-view": "^3.5.1",
     "react-native-web": "~0.18.11",
+    "react-native-web-swiper": "^2.2.4",
     "sizedbox": "^1.0.3"
   },
   "devDependencies": {
