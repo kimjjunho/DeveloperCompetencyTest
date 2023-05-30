@@ -1,8 +1,8 @@
-package com.example.server.global
+package com.example.server.global.jwt
 
 import com.example.server.domain.token.RefreshToken
 import com.example.server.domain.token.TokenRepository
-import com.example.server.global.UserDetailServiceImpl
+import com.example.server.global.authentication.UserDetailServiceImpl
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.SignatureAlgorithm
@@ -14,15 +14,15 @@ import java.util.*
 
 @Component
 class JwtProvider (
-        private val jwtProperties: JwtProperties,
-        private val tokenRepository: TokenRepository,
-        private val userDetailsService: UserDetailServiceImpl
+    private val jwtProperties: JwtProperties,
+    private val tokenRepository: TokenRepository,
+    private val userDetailsService: UserDetailServiceImpl
 ) {
     val ACCESSTOKEN_EXP_TIME: Long = 1000L * 60 * 60
     val REFRESHTOKEN_EXP_TIME: Long = 1000L * 60 * 60 * 24 * 7
 
     fun createAccessToken(userId: String): String {
-        val claims: Claims = Jwts.claims().setSubject(userId)
+//        val claims: Claims = Jwts.claims().setSubject(userId)
 
         return Jwts.builder()
                 .setSubject(userId)

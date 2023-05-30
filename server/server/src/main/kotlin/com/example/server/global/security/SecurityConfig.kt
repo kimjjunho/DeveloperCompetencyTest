@@ -1,5 +1,7 @@
-package com.example.server.global
+package com.example.server.global.security
 
+import com.example.server.global.jwt.JwtFilter
+import com.example.server.global.jwt.JwtProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

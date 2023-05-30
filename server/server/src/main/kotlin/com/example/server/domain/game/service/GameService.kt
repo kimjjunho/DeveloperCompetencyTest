@@ -5,7 +5,6 @@ import com.example.server.domain.game.api.dto.response.GameResultResponse
 import com.example.server.domain.game.entity.Game
 import com.example.server.domain.game.entity.toResponse
 import com.example.server.domain.game.repository.GameRepository
-import com.example.server.global.JwtProvider
 import org.springframework.stereotype.Service
 
 @Service
@@ -14,12 +13,14 @@ class GameService(
 ) {
 
     fun saveGameResult(gameResultRequest: GameResultRequest) {
-        val game = Game(
-                name = gameResultRequest.name,
-                total = gameResultRequest.total,
-                correct = gameResultRequest.correct,
-                date = gameResultRequest.date,
-        )
+        val game = with(gameResultRequest) {
+            Game(
+                    name = this.name,
+                    total = this.total,
+                    correct = this.correct,
+                    date = this.date,
+            )
+        }
         gameRepository.save(game)
     }
 

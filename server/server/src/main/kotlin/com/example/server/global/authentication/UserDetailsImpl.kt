@@ -1,4 +1,4 @@
-package com.example.server.global
+package com.example.server.global.authentication
 
 import com.example.server.domain.user.entity.User
 import org.springframework.security.core.GrantedAuthority
