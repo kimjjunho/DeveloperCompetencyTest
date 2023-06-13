@@ -7,14 +7,21 @@ import GProgressBar from "../../../design-system/component/ProgressBar";
 import GTimer from "../../../design-system/component/Timer";
 
 export default function RPS({navigation}) {
+  const [correct, setCorrect] = useState(1);
+  const r = "주먹"
+  const s = "가위"
+  const p = "보"
+  const me = "나"
+  const other = "상대"
+
   const totalStep = 5;
   const [progress, setProgress] = useState(1);
 
   const firstSecond = 5;
   const [second, setSecond] = useState(firstSecond);
 
-  const rpsList = ["주먹", "가위", "보"]
-  const personList = ["나", "상대"]
+  const rpsList = [r, s, p]
+  const personList = [me, other]
 
   const [rps, setRps] = useState("")
   const [person, setPerson] = useState("")
@@ -22,6 +29,43 @@ export default function RPS({navigation}) {
   const randomGame = () => {
     setRps(rpsList[Math.floor(Math.random() * rpsList.length)]);
     setPerson(personList[Math.floor(Math.random() * personList.length)])
+  }
+
+  const checkTest = (what) => {
+    if (person === other) {
+      if (rps === r) {
+        if (what === p) {
+          setCorrect(correct + 1);
+        }
+      }
+      else if (rps === s) {
+        if (what === r) {
+          setCorrect(correct + 1);
+        }
+      }
+      else if (rps === p) {
+        if (what === s) {
+          setCorrect(correct + 1);
+        }
+      }
+    } else if (person === "나") {
+      if (rps === r) {
+        if (what === s) {
+          setCorrect(correct + 1);
+        }
+      }
+      else if (rps === s) {
+        if (what === p) {
+          setCorrect(correct + 1);
+        }
+      }
+      else if (rps === p) {
+        if (what === r) {
+          setCorrect(correct + 1);
+        }
+      }
+    }
+    goNextStep()
   }
 
   useEffect(() => { randomGame() },[rps, person])
@@ -60,20 +104,20 @@ export default function RPS({navigation}) {
       <View style={{height: 130}}/>
 
       <View style={{flexDirection: 'row', justifyContent: 'center'}}>
-        <Pressable onPress={() => goNextStep()}>
-          <RPSItem what={"주먹"}/>
+        <Pressable onPress={() => checkTest(r)}>
+          <RPSItem what={r}/>
         </Pressable>
 
         <View style={{width: 30}}/>
 
-        <Pressable onPress={() => goNextStep()}>
-          <RPSItem what={"가위"}/>
+        <Pressable onPress={() => checkTest(s)}>
+          <RPSItem what={s}/>
         </Pressable>
 
         <View style={{width: 30}}/>
 
-        <Pressable onPress={() => goNextStep()}>
-          <RPSItem what={"보"}/>
+        <Pressable onPress={() => checkTest(p)}>
+          <RPSItem what={p}/>
         </Pressable>
       </View>
     </View>
