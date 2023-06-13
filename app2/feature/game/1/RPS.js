@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, Animated, StyleSheet } from "react-native";
 import GHeader from "../../../design-system/component/Header";
 import RPSItem from "./RPSItem";
@@ -12,11 +12,25 @@ export default function RPS({navigation}) {
 
   const firstSecond = 5;
   const [second, setSecond] = useState(firstSecond);
-  
+
+  const rpsList = ["주먹", "가위", "보"]
+  const personList = ["나", "상대"]
+
+  const [rps, setRps] = useState("")
+  const [person, setPerson] = useState("")
+
+  const randomGame = () => {
+    setRps(rpsList[Math.floor(Math.random() * rpsList.length)]);
+    setPerson(personList[Math.floor(Math.random() * personList.length)])
+  }
+
+  useEffect(() => { randomGame() },[rps, person])
+
   const goNextStep = () => {
     if (totalStep === progress) {
       navigation.pop();
     } else {
+      randomGame()
       setProgress(progress + 1);
       setSecond(firstSecond);
     }
@@ -39,8 +53,8 @@ export default function RPS({navigation}) {
       <View style={{height: 72}}/>
 
       <View style={{alignItems: 'center'}}>
-        <Text style={[Typography.title2]}>상대</Text>
-        <RPSItem what={"주먹"}/>
+        <Text style={[Typography.title2]}>{person}</Text>
+        <RPSItem what={rps}/>
       </View>
 
       <View style={{height: 130}}/>
