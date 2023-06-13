@@ -1,5 +1,5 @@
-import React, {useEffect, useRef, useState} from "react";
-import { View, StyleSheet, Animated, Text } from "react-native";
+import React, {useEffect, useRef } from "react";
+import { View, StyleSheet, Animated } from "react-native";
 import Color from "../Colors";
 
 function GProgressBar({ totalStep, nowStep }) {
