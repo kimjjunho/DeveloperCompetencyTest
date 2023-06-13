@@ -90,7 +90,6 @@ export default function Home({navigation}) {
                     <Text style={[Typography.detail2, {color: Color.green400}]}>게임 </Text>
                   </Pressable>
                   <Text style={[Typography.detail2, {color: Color.gray600}]}>| {item.count}문제</Text>
-
                 </View>
               </View>
               <View style={{backgroundColor: item.color, height: 64, width: 64, borderRadius: 50, marginEnd: 30}}/>

@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Main from './Main';
-import RPS from '../feature/game/1RPS';
+import RPS from '../feature/game/1/RPS';
 import ClickNumber from '../feature/game/2ClickNumber';
 import RotateFigure from '../feature/game/3RotateFigure';
 import Promise from '../feature/game/4Promise';
