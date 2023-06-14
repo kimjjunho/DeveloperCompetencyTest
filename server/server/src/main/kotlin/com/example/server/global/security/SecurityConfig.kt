@@ -30,7 +30,7 @@ class SecurityConfig(
                 .and()
                 .authorizeHttpRequests()
                 .antMatchers("/user/**").permitAll()
-                .antMatchers("/game/**").authenticated()
+                .antMatchers("/game/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()

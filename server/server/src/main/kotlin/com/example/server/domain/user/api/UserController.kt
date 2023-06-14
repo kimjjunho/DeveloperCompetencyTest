@@ -29,7 +29,7 @@ class UserController(
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signin")
     fun signIn(@Valid @RequestBody signInRequest: SignInRequest): TokenResponse =
-            userService.signIn(signinRequest = signInRequest)
+            userService.signIn(signInRequest = signInRequest)
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/information/{userId}")
