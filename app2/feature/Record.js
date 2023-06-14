@@ -1,37 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FlatList, View, Text, Platform } from "react-native";
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import PieChart from "react-native-pie-chart"
-import Pie from "react-native-pie"
 import Color from "../design-system/Colors";
 import GHeader from "../design-system/component/Header";
 import Typography from "../design-system/Typography";
 
 const ScoreData =[
   {
-    title: '가위바위보',
+    name: '가위바위보',
     date: '2022-03-13',
     total: 5,
     correct: 3,
   },
   {
-    title: '도형 회전하기',
+    name: '도형 회전하기',
     date: '2022-03-13',
     total: 5,
     correct: 2,
   },
   {
-    title: '길 만들기',
+    name: '길 만들기',
     date: '2023-05-23',
     total: 6,
     correct: 3,
   }
 ];
 
-const ScoreList = () => (
-  <View style={{flex: 1, backgroundColor: Color.white}}>
+const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb25qYWVtaW4iLCJleHAiOjE2ODY3MDg5NTl9.L2v9cZeVNgnuMt5xpD68fMtdfsPFG85swYncLLfjUjE"
+
+function ScoreList() {
+  const [scoreData, setScoreData] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:8080/game', {
+      method : "GET",
+      headers : {
+        Authorization : "Bearer " + token
+      }
+    })
+    .then(res=>res.json())
+    .then(res=>{
+       setScoreData(res.result_list)
+       console.log(res)
+    })
+  }, []);
+
+  return (
+    <View style={{flex: 1, backgroundColor: Color.white}}>
     <FlatList
-      data={ScoreData}
+      data={scoreData}
       renderItem={({item}) => {
         return <View style={
           {
@@ -53,7 +71,7 @@ const ScoreList = () => (
           }
         }>
           <View style={{marginStart: 16}}>
-            <Text style={[Typography.body3]}>{item.title}</Text>
+            <Text style={[Typography.body3]}>{item.name}</Text>
             <Text style={[Typography.detail2, {color: Color.gray600}]}>{item.date}</Text>
           </View>
           <Text style={[Typography.body3, {marginEnd: 16, color: item.correct/item.total >= 0.5 ? Color.blue400 : Color.red}]}>{item.total}/{item.correct}</Text>
@@ -61,7 +79,8 @@ const ScoreList = () => (
       }}
     />
   </View>
-);
+  );
+};
 
 const Graph = () => {
   const series = [123, 321, 123, 789, 537, 100, 100, 100];
@@ -81,6 +100,10 @@ const Graph = () => {
 const Tab = createMaterialTopTabNavigator();
 
 export default function Record() {
+  // const scoreData = async() => {
+    
+  // }
+  
   return(
     <>
      <GHeader title={"기록"} color={Color.white}/>
