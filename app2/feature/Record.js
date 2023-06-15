@@ -5,6 +5,7 @@ import PieChart from "react-native-pie-chart"
 import Color from "../design-system/Colors";
 import GHeader from "../design-system/component/Header";
 import Typography from "../design-system/Typography";
+import { token } from "../assets/data/local";
 
 const ScoreData =[
   {
@@ -27,7 +28,6 @@ const ScoreData =[
   }
 ];
 
-const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb25qYWVtaW4iLCJleHAiOjE2ODY3MDg5NTl9.L2v9cZeVNgnuMt5xpD68fMtdfsPFG85swYncLLfjUjE"
 
 function ScoreList() {
   const [scoreData, setScoreData] = useState([])
@@ -36,7 +36,7 @@ function ScoreList() {
     fetch('http://localhost:8080/game', {
       method : "GET",
       headers : {
-        Authorization : "Bearer " + token
+        Authorization : token
       }
     })
     .then(res=>res.json())

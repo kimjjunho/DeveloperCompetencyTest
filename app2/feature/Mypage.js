@@ -35,7 +35,6 @@ export default function Mypage() {
         />
       </Pressable>
       <MypageItem title={'이름'} content={'김준호'}/>
-      <MypageItem title={'생년월일'} content={'2005.10.07'}/>
       <MypageItem title={'학년 반 번호'} content={'3학년 2반 5번'}/>
       <MypageItem title={'아이디'} content={'jjun107'}/>
     </View>
