@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export var token =  "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb25qYWVtaW4iLCJleHAiOjE2ODY4NDMwNDl9.XGFSFjPzMl123ysTqZGM5fXFPBSYp_CUqUT-U-pAtVc"
+export var token =  "Bearer " + "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzb25qYWVtaW4iLCJleHAiOjE2ODY4NzkwNDJ9.gUNwlJE8eEQUNpmoOg5kGh18d7fIafbJ4w8CW7Otv-U"
+export var id = "sonjaemin"
 
 export const key = {
   TOKEN : "token"

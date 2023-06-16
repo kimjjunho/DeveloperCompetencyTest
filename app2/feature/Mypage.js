@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Pressable, Alert, Image } from "react-native";
 import GHeader from "../design-system/component/Header";
 import Color from "../design-system/Colors";
 import Typography from "../design-system/Typography";
+import { id, token } from "../assets/data/local";
 
 function MypageItem({title, content}) {
   return(
@@ -23,6 +24,20 @@ function MypageItem({title, content}) {
 };
 
 export default function Mypage() {
+
+  const [profileData, setProfileData] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:8080/user/information/' + id, {
+      method : "GET",
+      headers : {
+        Authorization : token
+      }
+    })
+    .then(res=>res.json())
+    .then(res=>{ setProfileData(res) })
+  }, []);
+
   return(
     <View style={{backgroundColor: Color.white, flex: 1 }}>
       <GHeader title={"마이페이지"}/>
@@ -34,9 +49,8 @@ export default function Mypage() {
           style ={{borderRadius: 50, height: 60, width: 60}}
         />
       </Pressable>
-      <MypageItem title={'이름'} content={'김준호'}/>
-      <MypageItem title={'학년 반 번호'} content={'3학년 2반 5번'}/>
-      <MypageItem title={'아이디'} content={'jjun107'}/>
+      <MypageItem title={'이름'} content={profileData.name}/>
+      <MypageItem title={'아이디'} content={id}/>
     </View>
   );
 };

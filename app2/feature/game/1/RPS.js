@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Pressable, Animated, StyleSheet } from "react-native";
+import { View, Text, Pressable } from "react-native";
 import GHeader from "../../../design-system/component/Header";
 import RPSItem from "./RPSItem";
 import Typography from "../../../design-system/Typography";
 import GProgressBar from "../../../design-system/component/ProgressBar";
 import GTimer from "../../../design-system/component/Timer";
 import { token } from "../../../assets/data/local";
-import axios from "axios"
 
 export default function RPS({navigation}) {
   const [correct, setCorrect] = useState(1);
@@ -74,9 +73,7 @@ export default function RPS({navigation}) {
 
   const goNextStep = () => {
     if (totalStep === progress) {
-      let Header = new Headers();
-      Header.append("Authorization", token)
-       fetch('http://127.0.0.1:8080/game', {
+       fetch('http://localhost:8080/game', {
         method: "POST",
         headers : {
           "Content-Type": "application/json",
@@ -85,11 +82,11 @@ export default function RPS({navigation}) {
         body : JSON.stringify({
           "name": "가위바위보",
           "total": 5,
-          "correct":1,
+          "correct": correct,
           "date" : "2023-06-14"
         })
       })
-      .then(res=>console.log(res.json()))
+      .then(res=>res.json())
       .then(navigation.pop())
       
     } else {

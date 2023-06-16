@@ -40,10 +40,7 @@ function ScoreList() {
       }
     })
     .then(res=>res.json())
-    .then(res=>{
-       setScoreData(res.result_list)
-       console.log(res)
-    })
+    .then(res=>{ setScoreData(res.result_list) })
   }, []);
 
   return (
