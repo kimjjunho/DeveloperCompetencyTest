@@ -5,7 +5,8 @@ import PieChart from "react-native-pie-chart"
 import Color from "../design-system/Colors";
 import GHeader from "../design-system/component/Header";
 import Typography from "../design-system/Typography";
-import { token } from "../assets/data/local";
+import { Key, token } from "../assets/data/local";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const ScoreData =[
   {
@@ -30,17 +31,23 @@ const ScoreData =[
 
 
 function ScoreList() {
+  const refresh = true;
   const [scoreData, setScoreData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8080/game', {
-      method : "GET",
-      headers : {
-        Authorization : token
-      }
-    })
-    .then(res=>res.json())
-    .then(res=>{ setScoreData(res.result_list) })
+    AsyncStorage.getItem(Key.TOKEN).then(token=>
+      fetch('http://localhost:8080/game', {
+        method : "GET",
+        headers : {
+          Authorization : token
+        }
+      })
+      .then(res=>res.json())
+      .then(res=>{ 
+        setScoreData(res.result_list.reverse())
+       })
+    )
+
   }, []);
 
   return (

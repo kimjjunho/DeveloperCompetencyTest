@@ -3,7 +3,7 @@ import { View, Text, Pressable, Alert, Image } from "react-native";
 import GHeader from "../design-system/component/Header";
 import Color from "../design-system/Colors";
 import Typography from "../design-system/Typography";
-import { id, token } from "../assets/data/local";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function MypageItem({title, content}) {
   return(
@@ -28,14 +28,18 @@ export default function Mypage() {
   const [profileData, setProfileData] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:8080/user/information/' + id, {
-      method : "GET",
-      headers : {
-        Authorization : token
-      }
-    })
-    .then(res=>res.json())
-    .then(res=>{ setProfileData(res) })
+    AsyncStorage.getItem("token").then(token=>
+      AsyncStorage.getItem("id").then(id=>
+        fetch('http://localhost:8080/user/information/' + id, {
+          method : "GET",
+          headers : {
+            Authorization : token
+          }
+        })
+        .then(res=>res.json())
+        .then(res=>{ setProfileData(res) })
+      )
+    )
   }, []);
 
   return(
@@ -50,7 +54,7 @@ export default function Mypage() {
         />
       </Pressable>
       <MypageItem title={'이름'} content={profileData.name}/>
-      <MypageItem title={'아이디'} content={id}/>
+      <MypageItem title={'아이디'} content={profileData.user_id}/>
     </View>
   );
 };

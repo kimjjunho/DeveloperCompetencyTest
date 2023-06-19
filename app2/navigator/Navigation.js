@@ -9,7 +9,7 @@ import MakeRoad from '../feature/game/5MakeRoad';
 import RememberFigure from '../feature/game/6RememberFigure';
 import MakePotion from '../feature/game/8MakePotion';
 import CatCatch from '../feature/game/7CatCatch';
-import Signin from '../feature/sign/Signin';
+import Onboard from '../feature/sign/Onboard'
 
 const Stack = createNativeStackNavigator();
 
@@ -17,10 +17,10 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName='Signin'
+        initialRouteName='Sign'
         screenOptions={{ headerShown : false }}
         >
-        <Stack.Screen name='Signin' component={Signin}/>
+        <Stack.Screen name='Sign' component={Onboard}/>
         <Stack.Screen name='Main' component={Main}/>
         <Stack.Screen name='1' component={RPS}/>
         <Stack.Screen name='2' component={ClickNumber}/>

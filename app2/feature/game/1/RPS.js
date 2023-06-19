@@ -5,7 +5,8 @@ import RPSItem from "./RPSItem";
 import Typography from "../../../design-system/Typography";
 import GProgressBar from "../../../design-system/component/ProgressBar";
 import GTimer from "../../../design-system/component/Timer";
-import { token } from "../../../assets/data/local";
+import { Key, token } from "../../../assets/data/local";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function RPS({navigation}) {
   const [correct, setCorrect] = useState(1);
@@ -73,22 +74,23 @@ export default function RPS({navigation}) {
 
   const goNextStep = () => {
     if (totalStep === progress) {
-       fetch('http://localhost:8080/game', {
-        method: "POST",
-        headers : {
-          "Content-Type": "application/json",
-          Authorization : token,
-        },
-        body : JSON.stringify({
-          "name": "가위바위보",
-          "total": 5,
-          "correct": correct,
-          "date" : "2023-06-14"
+      AsyncStorage.getItem(Key.TOKEN).then(token=>
+        fetch('http://localhost:8080/game', {
+          method: "POST",
+          headers : {
+            "Content-Type": "application/json",
+            Authorization : token,
+          },
+          body : JSON.stringify({
+            "name": "가위바위보",
+            "total": 5,
+            "correct": correct,
+            "date" : "2023-06-20"
+          })
         })
-      })
-      .then(res=>res.json())
-      .then(navigation.pop())
-      
+        .then(res=>res.json())
+        .then(navigation.pop())
+      )
     } else {
       randomGame()
       setProgress(progress + 1);
