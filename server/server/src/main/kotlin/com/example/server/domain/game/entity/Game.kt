@@ -1,6 +1,7 @@
 package com.example.server.domain.game.entity
 
 import com.example.server.domain.game.api.dto.response.GameResultResponse
+import com.example.server.domain.user.entity.User
 import java.time.LocalDate
 import javax.persistence.*
 
@@ -18,6 +19,10 @@ data class Game(
         val correct: Int,
 
         val date: LocalDate,
+
+        @ManyToOne(fetch = FetchType.LAZY)
+        @JoinColumn(name = "user_id")
+        val user: User
 )
 
 
