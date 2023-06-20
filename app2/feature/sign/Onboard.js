@@ -124,16 +124,42 @@ function Signin({ navigation, changeState }) {
 }
 
 function Signup({ changeState }) {
+  const [name, setName] = useState("")
+  const [id, setId] = useState("")
+  const [password, setPassword] = useState("")
+
   return(
     <View>
       <View style={{height: 26}}/>
-      <TextInput style={styles.input_container} placeholder="이름"/>
+      <TextInput style={styles.input_container} placeholder="이름" value={name} onChangeText={setName}/>
       <View style={{height: 16}}/>
-      <TextInput style={styles.input_container} placeholder="아이디"/>
+      <TextInput style={styles.input_container} placeholder="아이디" value={id} onChangeText={setId}/>
       <View style={{height: 16}}/>
-      <TextInput style={styles.input_container} placeholder="비밀번호"/>
+      <TextInput style={styles.input_container} placeholder="비밀번호" value={password} onChangeText={setPassword}/>
       <View style={{height: 30}}/>
-      <GButton text='회원가입' onPress={() => changeState(true)}/>
+      <GButton 
+        text='회원가입'
+        onPress={() => {
+          fetch('http://localhost:8080/user/signup', {
+              method: "POST",
+              headers : {
+                "Content-Type": "application/json",
+              },
+              body : JSON.stringify({
+                "user_id": id,
+                "password": password,
+                "name" : name,
+                "image" : "",
+              })
+            })
+            .then(res=>{
+              if (res.status === 201) {
+                changeState(true)
+              }
+            })
+          }
+        }
+        />
       <View style={{height: 20}}/>
       <Pressable
         style={{marginHorizontal: 140}}
