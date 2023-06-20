@@ -94,8 +94,13 @@ function Signin({ navigation, changeState }) {
                 "password": password,
               })
             })
-            .then(res=>res.json())
+            .then(res=> {
+              if (res.ok) {
+                return res.json()
+              }
+            })
             .then(res=>{
+              console.log(res)
               saveData(Key.ID, id)
               saveData(Key.TOKEN,"Bearer " + new String(res.access_token))
               navigation.replace("Main")

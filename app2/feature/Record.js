@@ -31,7 +31,6 @@ const ScoreData =[
 
 
 function ScoreList() {
-  const refresh = true;
   const [scoreData, setScoreData] = useState([])
 
   useEffect(() => {
@@ -48,7 +47,7 @@ function ScoreList() {
        })
     )
 
-  }, []);
+  }, [scoreData]);
 
   return (
     <View style={{flex: 1, backgroundColor: Color.white}}>

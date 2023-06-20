@@ -40,7 +40,7 @@ export default function Mypage() {
         .then(res=>{ setProfileData(res) })
       )
     )
-  }, []);
+  }, [profileData]);
 
   return(
     <View style={{backgroundColor: Color.white, flex: 1 }}>
